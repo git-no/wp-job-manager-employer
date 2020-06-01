@@ -75,10 +75,10 @@ class Wp_Job_Manager_Employer {
 		$this->plugin_name = 'wp-job-manager-employer';
 
 		$this->load_dependencies();
+		$this->define_post_types();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -122,7 +122,15 @@ class Wp_Job_Manager_Employer {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-job-manager-employer-public.php';
 
+		/**
+		 * Additional classes responsible for defining the plugin functionallity.
+		 * 
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-job-manager-employer-post-types.php';
+
 		$this->loader = new Wp_Job_Manager_Employer_Loader();
+
+		$this->post_types = new Wp_Job_Manager_Employer_Post_Types();
 
 	}
 
@@ -161,6 +169,22 @@ class Wp_Job_Manager_Employer {
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality
+	 * of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_public_hooks() {
+
+		$plugin_public = new Wp_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
+
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+	}
+
+	/**
+	 * Register all additional functionalities
 	 * of the plugin.
 	 *
 	 * @since    1.0.0
