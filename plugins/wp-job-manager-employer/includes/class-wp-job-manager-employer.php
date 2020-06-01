@@ -9,8 +9,8 @@
  * @link       https://www.swissmation.com
  * @since      1.0.0
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/includes
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/includes
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/includes
  * @author     swissmation <AUTHORMAIL>
  */
-class Wp_Job_Manager_Employer {
+class WP_Job_Manager_Employer {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Wp_Job_Manager_Employer {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wp_Job_Manager_Employer_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      WP_Job_Manager_Employer_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -86,10 +86,10 @@ class Wp_Job_Manager_Employer {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Wp_Job_Manager_Employer_Loader. Orchestrates the hooks of the plugin.
-	 * - Wp_Job_Manager_Employer_i18n. Defines internationalization functionality.
-	 * - Wp_Job_Manager_Employer_Admin. Defines all hooks for the admin area.
-	 * - Wp_Job_Manager_Employer_Public. Defines all hooks for the public side of the site.
+	 * - WP_Job_Manager_Employer_Loader. Orchestrates the hooks of the plugin.
+	 * - WP_Job_Manager_Employer_i18n. Defines internationalization functionality.
+	 * - WP_Job_Manager_Employer_Admin. Defines all hooks for the admin area.
+	 * - WP_Job_Manager_Employer_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -128,16 +128,16 @@ class Wp_Job_Manager_Employer {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-job-manager-employer-post-types.php';
 
-		$this->loader = new Wp_Job_Manager_Employer_Loader();
+		$this->loader = new WP_Job_Manager_Employer_Loader();
 
-		$this->post_types = new Wp_Job_Manager_Employer_Post_Types();
+		$this->post_types = new WP_Job_Manager_Employer_Post_Types();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Wp_Job_Manager_Employer_i18n class in order to set the domain and to register the hook
+	 * Uses the WP_Job_Manager_Employer_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -145,7 +145,7 @@ class Wp_Job_Manager_Employer {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Wp_Job_Manager_Employer_i18n();
+		$plugin_i18n = new WP_Job_Manager_Employer_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -160,7 +160,7 @@ class Wp_Job_Manager_Employer {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Wp_Job_Manager_Employer_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new WP_Job_Manager_Employer_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -176,7 +176,7 @@ class Wp_Job_Manager_Employer {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wp_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new WP_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -192,7 +192,7 @@ class Wp_Job_Manager_Employer {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wp_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new WP_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -223,7 +223,7 @@ class Wp_Job_Manager_Employer {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Wp_Job_Manager_Employer_Loader    Orchestrates the hooks of the plugin.
+	 * @return    WP_Job_Manager_Employer_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

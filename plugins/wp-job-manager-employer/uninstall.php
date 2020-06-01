@@ -22,7 +22,7 @@
  * @link       https://www.swissmation.com
  * @since      1.0.0
  *
- * @package    Wp_Job_Manager_Employer
+ * @package    WP_Job_Manager_Employer
  */
 
 // If uninstall not called from WordPress, then exit.

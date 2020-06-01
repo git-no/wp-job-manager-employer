@@ -9,8 +9,8 @@
  * @link       https://www.swissmation.com
  * @since      1.0.0
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/includes
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/includes
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/includes
  * @author     swissmation <AUTHORMAIL>
  */
-class Wp_Job_Manager_Employer_i18n {
+class WP_Job_Manager_Employer_i18n {
 
 
 	/**

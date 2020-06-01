@@ -8,8 +8,8 @@
  * @link       https://www.swissmation.com
  * @since      1.0.0
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/admin/partials
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/admin/partials
  */
 ?>
 

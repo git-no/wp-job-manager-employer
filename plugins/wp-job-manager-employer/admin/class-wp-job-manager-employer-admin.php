@@ -6,8 +6,8 @@
  * @link       https://www.swissmation.com
  * @since      1.0.0
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/admin
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/admin
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/admin
  * @author     swissmation <AUTHORMAIL>
  */
-class Wp_Job_Manager_Employer_Admin {
+class WP_Job_Manager_Employer_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -65,10 +65,10 @@ class Wp_Job_Manager_Employer_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Job_Manager_Employer_Loader as all of the hooks are defined
+		 * defined in WP_Job_Manager_Employer_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wp_Job_Manager_Employer_Loader will then create the relationship
+		 * The WP_Job_Manager_Employer_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -88,10 +88,10 @@ class Wp_Job_Manager_Employer_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Job_Manager_Employer_Loader as all of the hooks are defined
+		 * defined in WP_Job_Manager_Employer_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wp_Job_Manager_Employer_Loader will then create the relationship
+		 * The WP_Job_Manager_Employer_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */

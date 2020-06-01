@@ -10,7 +10,7 @@
  *
  * @link              https://www.swissmation.com
  * @since             1.0.0
- * @package           Wp_Job_Manager_Employer
+ * @package           WP_Job_Manager_Employer
  *
  * @wordpress-plugin
  * Plugin Name:       Employer Branding for WP Job Manager
@@ -43,7 +43,7 @@ define( 'WP_JOB_MANAGER_EMPLOYER_VERSION', '1.0.0' );
  */
 function activate_wp_job_manager_employer() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-job-manager-employer-activator.php';
-	Wp_Job_Manager_Employer_Activator::activate();
+	WP_Job_Manager_Employer_Activator::activate();
 }
 
 /**
@@ -52,7 +52,7 @@ function activate_wp_job_manager_employer() {
  */
 function deactivate_wp_job_manager_employer() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-job-manager-employer-deactivator.php';
-	Wp_Job_Manager_Employer_Deactivator::deactivate();
+	WP_Job_Manager_Employer_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_wp_job_manager_employer' );
@@ -75,7 +75,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-job-manager-employer.ph
  */
 function run_wp_job_manager_employer() {
 
-	$plugin = new Wp_Job_Manager_Employer();
+	$plugin = new WP_Job_Manager_Employer();
 	$plugin->run();
 
 }

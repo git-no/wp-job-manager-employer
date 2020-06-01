@@ -6,8 +6,8 @@
  * @link       https://www.swissmation.com
  * @since      1.0.0
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/includes
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Wp_Job_Manager_Employer
- * @subpackage Wp_Job_Manager_Employer/includes
+ * @package    WP_Job_Manager_Employer
+ * @subpackage WP_Job_Manager_Employer/includes
  * @author     swissmation <AUTHORMAIL>
  */
-class Wp_Job_Manager_Employer_Loader {
+class WP_Job_Manager_Employer_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
