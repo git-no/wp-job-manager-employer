@@ -75,7 +75,9 @@ class WP_Job_Manager_Employer {
 		$this->plugin_name = 'wp-job-manager-employer';
 
 		$this->load_dependencies();
+		
 		$this->define_post_types();
+
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
@@ -126,12 +128,25 @@ class WP_Job_Manager_Employer {
 		 * Additional classes responsible for defining the plugin functionallity.
 		 * 
 		 */
+
+
+		// *** todo: sortieren/dokumentieren
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-job-manager-functions';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-job-manager-template';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-job-manager-employer-post-types.php';
+
 
 		$this->loader = new WP_Job_Manager_Employer_Loader();
 
+		
+		// todo: sortieren/dokumentieren
+		// Initialize post types.
 		$this->post_types = new WP_Job_Manager_Employer_Post_Types();
 
+		// todo: sortieren
+		$this->loader->add_action( 'switch_theme', $null, 'flush_rewrite_rules', 15 );
+
+		add_action( 'switch_theme', 'flush_rewrite_rules', 15 );
 	}
 
 	/**
@@ -190,14 +205,14 @@ class WP_Job_Manager_Employer {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	// private function define_post_types() {
 
-		$plugin_public = new WP_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
+	// 	$plugin_public = new WP_Job_Manager_Employer_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+	// 	$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+	// 	$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-	}
+	// }
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.

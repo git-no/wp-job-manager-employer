@@ -37,6 +37,54 @@ class WP_Job_Manager_Employer_Post_Types {
     }
     
     /**
+	 * Sets up actions related to the employer post type.
+	 */
+	public function init_post_types() {
+		add_action( 'wp', array( $this, 'download_resume_handler' ) );
+		add_filter( 'admin_head', array( $this, 'admin_head' ) );
+		add_filter( 'the_title', array( $this, 'resume_title' ), 10, 2 );
+		add_filter( 'single_post_title', array( $this, 'resume_title' ), 10, 2 );
+		add_filter( 'the_content', array( $this, 'resume_content' ) );
+		if ( resume_manager_discourage_resume_search_indexing() ) {
+			add_filter( 'wp_head', array( $this, 'add_no_robots' ) );
+		}
+
+		add_filter( 'the_resume_description', 'wptexturize'        );
+		add_filter( 'the_resume_description', 'convert_smilies'    );
+		add_filter( 'the_resume_description', 'convert_chars'      );
+		add_filter( 'the_resume_description', 'wpautop'            );
+		add_filter( 'the_resume_description', 'shortcode_unautop'  );
+		add_filter( 'the_resume_description', 'prepend_attachment' );
+
+		add_action( 'resume_manager_contact_details', array( $this, 'contact_details_email' ) );
+
+		add_action( 'pending_to_publish', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'preview_to_publish', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'draft_to_publish', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'auto-draft_to_publish', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'hidden_to_publish', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'expired_to_publish', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'save_post', array( $this, 'setup_autohide_cron' ) );
+		add_action( 'auto-hide-resume', array( $this, 'hide_resume' ) );
+
+		add_action( 'update_post_meta', array( $this, 'maybe_update_menu_order' ), 10, 4 );
+		add_filter( 'wp_insert_post_data', array( $this, 'fix_post_name' ), 10, 2 );
+		add_action( 'pending_payment_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'pending_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'preview_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'draft_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'auto-draft_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'expired_to_publish', array( $this, 'set_expiry' ) );
+		add_action( 'resume_manager_check_for_expired_resumes', array( $this, 'check_for_expired_resumes' ) );
+
+		add_action( 'save_post', array( $this, 'flush_get_resume_listings_cache' ) );
+		add_action( 'delete_post', array( $this, 'flush_get_resume_listings_cache' ) );
+		add_action( 'trash_post', array( $this, 'flush_get_resume_listings_cache' ) );
+
+		add_action( 'resume_manager_my_resume_do_action', array( $this, 'resume_manager_my_resume_do_action' ) );
+    }
+    
+    /**
 	 * register_post_types function.
 	 *
 	 * @access public
